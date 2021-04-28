@@ -2,17 +2,16 @@ import React, { useState } from "react";
 import "./styles.css";
 
 export default function App() {
-  const [likeCount, setlikeCount] = useState(0);
-
-  function likehandler() {
-    var newlikeCount = likeCount + 1;
-    setlikeCount(newlikeCount);
+  var [value, setValue] = useState("");
+  function inputHandler(event) {
+    //console.log(event.target.value)
+    setValue(event.target.value);
   }
-
   return (
     <div className="App">
       <h1>Interpret</h1>
-      <button onClick={likehandler}>Like Me!</button> {likeCount}
+      <input onChange={inputHandler}></input>
+      <div>Welcome {value}</div>
     </div>
   );
 }
