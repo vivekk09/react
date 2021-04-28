@@ -5,6 +5,8 @@ const emojiDictionary = {
   "😊": "Smiling"
 };
 
+var shoppingList = ["milk", "eggs", "bread", "banana"];
+
 export default function App() {
   const [emoji, setEmoji] = useState("");
 
@@ -18,11 +20,28 @@ export default function App() {
     setEmoji(result);
   }
 
+  function getBg(index) {
+    if (index % 2 === 0) {
+      return "blue";
+    }
+    return "green";
+  }
+
   return (
     <div className="App">
       <h1>Interpret</h1>
       <input onChange={emojiHandler}></input>
       <div> Interpretation: {emoji} </div>
+
+      <ul>
+        {shoppingList.map((item, index) => {
+          return (
+            <li key={item} style={{ backgroundColor: getBg(index) }}>
+              {item}
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }
